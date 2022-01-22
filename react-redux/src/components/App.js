@@ -5,7 +5,7 @@ import SongList from './SongList';
 // redux start //
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-import { selectSong } from '../actions';
+import SongDetail from './SongDetail';
 import reducers from '../reducers';
 // redux end //
 
@@ -13,6 +13,7 @@ function App() {
   return (
     <Provider store={createStore(reducers)}>
       <>
+        <SongDetail />
         <SongList />
       </>
     </Provider>

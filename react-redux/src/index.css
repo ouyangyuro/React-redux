@@ -19,8 +19,8 @@ code {
 @tailwind utilities;
 
   /* below tailwind darkMode: 'class' or 'media' 切換darkMode時的背景顏色設定，沒設定背景顏色出不來但如果dark:{自定義顏色}一樣出的來 */
-/* @layer base { 
+@layer base { 
   body {
     @apply dark:bg-black; 
   }
-} */
+}
