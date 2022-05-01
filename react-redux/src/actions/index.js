@@ -2,7 +2,7 @@
 
 //選擇歌曲
 export const selectSong = (song) => {
-  // return ab action
+  // return an action
   return {
     type: 'SONG_SELECTED',
     payload: song,

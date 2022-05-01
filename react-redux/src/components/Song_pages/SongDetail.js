@@ -1,9 +1,13 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { connect, useSelector } from 'react-redux';
 
 //可以不寫 SongDetail(props) 而直接寫 SongDetail({ selSong }) 取 mapStateProps return 的 selSong，這樣不用寫很長的 {props.selSong.title} 而直接寫 {selSong.title}
-function SongDetail({ selSong }) {
-  console.log('SongDetail selSong props', selSong); //for check
+function SongDetail() {
+  // console.log('SongDetail selSong props', selSong); //for check
+  // below hook way //
+  const selSong = useSelector((state) => state.selectedSong);
+  console.log('SongDetail selSong props hook', selSong); //for check
+  // above hook way //
   return (
     <>
       <div className="max-w-sm rounded overflow-hidden shadow-lg m-3 bg-white dark:bg-slate-800 text-slate-900 dark:text-teal-400">
@@ -29,9 +33,13 @@ function SongDetail({ selSong }) {
 }
 
 // below looking for store's reducers
-const mapStateProps = (state) => {
-  console.log("get state's selectedSong:", state.selectedSong); //for check
-  return { selSong: state.selectedSong };
-};
+// const mapStateProps = (state) => {
+//   console.log("get state's selectedSong:", state.selectedSong); //for check
+//   return { selSong: state.selectedSong };
+// };
 
-export default connect(mapStateProps)(SongDetail);
+// export default connect(mapStateProps)(SongDetail);
+
+// below hook way //
+export default SongDetail;
+// above hook way //

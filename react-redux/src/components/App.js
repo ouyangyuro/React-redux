@@ -1,22 +1,31 @@
 import React from 'react';
-import SongList from './SongList';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-//PS: import 有 "{}" 是因為 export 時不是用export default
-// redux start //
-import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-import SongDetail from './SongDetail';
-import reducers from '../reducers';
-// redux end //
+//====== below components start ======//
+import Navbar from './Navbar';
+import SongList from './Song_pages/SongList';
+import SongDetail from './Song_pages/SongDetail';
+//====== below components end ======//
 
 function App() {
   return (
-    <Provider store={createStore(reducers)}>
+    <Router>
       <>
-        <SongDetail />
-        <SongList />
+        <Navbar />
+        <Switch>
+          <Route exact path="/song">
+            <SongDetail />
+            <SongList />
+          </Route>
+          <Route exact path="/blog">
+            <h1 className="text-white">Blog</h1>
+          </Route>
+          <Route exact path="/">
+            <h1 className="text-white">Home</h1>
+          </Route>
+        </Switch>
       </>
-    </Provider>
+    </Router>
   );
 }
 
