@@ -18,8 +18,16 @@ const selectedSongReducer = (selectedSong = null, action) => {
   return selectedSong;
 };
 
+const postsReducer = (state = [], action) => {
+  if (action.type === 'FETCH_POSTS') {
+    return action.payload;
+  }
+  return state;
+};
+
 //將Reducers function放進來
 export default combineReducers({
   songs: songReducer,
   selectedSong: selectedSongReducer,
+  posts: postsReducer,
 });

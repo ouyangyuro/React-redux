@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Navbar from './Navbar';
 import SongList from './Song_pages/SongList';
 import SongDetail from './Song_pages/SongDetail';
+import PostList from './Blog_pages/PostList';
 //====== below components end ======//
 
 function App() {
@@ -18,7 +19,7 @@ function App() {
             <SongList />
           </Route>
           <Route exact path="/blog">
-            <h1 className="text-white">Blog</h1>
+            <PostList />
           </Route>
           <Route exact path="/">
             <h1 className="text-white">Home</h1>
