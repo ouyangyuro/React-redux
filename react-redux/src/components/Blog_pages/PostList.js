@@ -1,18 +1,24 @@
 import React, { useEffect } from 'react';
 import { UserCircleIcon } from '@heroicons/react/outline';
 
+//====== below redux staff start ======//
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchPosts } from '../../actions';
+import { fetchPostsAndUsers } from '../../actions';
+//====== above redux staff end ======//
+
+//====== below components start ======//
+import UserHeader from '../Blog_pages/UserHeader';
+//====== above components end ======//
 
 function PostList() {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchPosts()); //call api
+    dispatch(fetchPostsAndUsers()); //call api
     // Safe to add dispatch to the dependencies array (the React hooks lint rules do not know that dispatch should be stable, and will warn that the dispatch variable should be added to dependency arrays for useEffect and useCallback. The simplest solution is to do just that)
   }, [dispatch]);
 
   const posts = useSelector((state) => state.posts);
-  console.log(posts); //for check
+  // console.log('state posts:', posts); //for check
 
   return (
     <>
@@ -28,6 +34,7 @@ function PostList() {
                 <h2 className="text-2xl">{post.title}</h2>
               </div>
               <p>{post.body}</p>
+              <UserHeader userId={post.userId} />
             </div>
           );
         })}
