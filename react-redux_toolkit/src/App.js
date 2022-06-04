@@ -16,7 +16,8 @@ function App() {
 
   useEffect(() => {
     dispatch(getPosts()); //call api
-  }, []);
+    // Safe to add dispatch to the dependencies array (the React hooks lint rules do not know that dispatch should be stable, and will warn that the dispatch variable should be added to dependency arrays for useEffect and useCallback. The simplest solution is to do just that) https://react-redux.js.org/api/hooks#usedispatch
+  }, [dispatch]);
 
   const reservations = useSelector((state) => state.reservations.value);
   // console.log('reservations state:', reservations); //for check
